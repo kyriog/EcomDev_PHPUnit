@@ -46,6 +46,10 @@ class EcomDev_PHPUnit_Test_Case_Helper_Customer extends EcomDev_PHPUnit_Abstract
             'mockSession',
             'core/cookie'
         );
+        TestHelper::invoke(
+            'mockSession',
+            'core/session'
+        );
 
         if ($storeId === null) {
             $storeId = TestUtil::app()->getAnyStoreView()->getCode();
