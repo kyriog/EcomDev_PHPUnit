@@ -201,6 +201,17 @@ class EcomDev_PHPUnit_Mock_Proxy
     }
 
     /**
+     * @return bool
+     */
+    public function __phpunit_hasMatchers()
+    {
+        throw new RuntimeException(
+            'Mock object proxy cannot be used for checking matchers'
+            . 'use getMockInstance method for real mock object'
+        );
+    }
+
+    /**
      * Forwards all method calls to mock instance
      *
      * @param string $name
