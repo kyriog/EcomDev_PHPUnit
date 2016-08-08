@@ -60,7 +60,7 @@ class EcomDev_PHPUnitTest_Test_Lib_AbstractHelper extends PHPUnit_Framework_Test
             ->method('callMethod')
             ->will($this->returnCallback(function ($method, array $args) use ($helper, $stubResult) {
                 $invocation = new PHPUnit_Framework_MockObject_Invocation_Object(
-                    get_class($helper), $method, $args, $helper
+                    get_class($helper), $method, $args, $helper, $this
                 );
                 return $stubResult[$method]->invoke($invocation);
             }));

@@ -80,12 +80,15 @@ class EcomDev_PHPUnitTest_Test_Lib_Mock_Proxy extends PHPUnit_Framework_TestCase
 
     public function testExpects()
     {
-        $this->assertAttributeEmpty('mockInstance', $this->mockProxy);
+        $mockProxy = new EcomDev_PHPUnit_Mock_Proxy($this, 'EcomDev_PHPUnit_AbstractConstraint');
+        $mockProxy->disableOriginalConstructor()
+            ->setMethods(array('compareValues'));
+        $this->assertAttributeEmpty('mockInstance', $mockProxy);
         $this->assertInstanceOf(
             'PHPUnit_Framework_MockObject_Builder_InvocationMocker',
-            $this->mockProxy->expects($this->any())->method('compareValues')
+            $mockProxy->expects($this->any())->method('compareValues')
         );
-        $this->assertAttributeInstanceOf('EcomDev_PHPUnit_AbstractConstraint', 'mockInstance', $this->mockProxy);
+        $this->assertAttributeInstanceOf('EcomDev_PHPUnit_AbstractConstraint', 'mockInstance', $mockProxy);
     }
 
     public function testGetInvocationMocker()

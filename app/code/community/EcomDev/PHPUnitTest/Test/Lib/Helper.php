@@ -68,7 +68,7 @@ class EcomDev_PHPUnitTest_Test_Lib_Helper extends PHPUnit_Framework_TestCase
         for ($i = 0; $i < $count; $i ++) {
             $helperInterface = $helperInterfaces[$i % 2 === 0];
             $result[] = $this->getMockForAbstractClass(
-                $helperInterface, array(), 'Test_Helper_Name' . $i
+                $helperInterface, array(), 'Test_Helper_Name' . $i, true, true, true, ['setUp', 'tearDown']
             );
         }
 
