@@ -555,18 +555,25 @@ class EcomDev_PHPUnit_Test_Case_Util
         }
 
         $previousCall = $backTraceCalls[2];
+        if (isset($previousCall['file'])) {
+            $file = $previousCall['file'];
+            $line = $previousCall['line'];
+        } else {
+            $file = $backTraceCalls[1]['file'];
+            $line = $backTraceCalls[1]['line'];
+        }
 
         throw new ErrorException(
             sprintf(
                 'Call to undefined function %s%s%s()',
                 $previousCall['class'],
                 $previousCall['type'],
-                $previousCall['function']
+                $method
             ),
             0,
             E_USER_ERROR,
-            $previousCall['file'],
-            $previousCall['line']
+            $file,
+            $line
         );
     }
 }
