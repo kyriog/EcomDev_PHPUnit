@@ -32,20 +32,6 @@ class EcomDev_PHPUnitTest_Test_Lib_Mock_Proxy extends PHPUnit_Framework_TestCase
         $this->mockProxy->disableOriginalConstructor();
     }
 
-    /**
-     * Test addition of the method into mock proxy
-     *
-     *
-     */
-    public function testAddMethod()
-    {
-        $this->assertAttributeEquals(array(), 'methods', $this->mockProxy);
-        $this->mockProxy->addMethod('methodName');
-        $this->assertAttributeEquals(array('methodName'), 'methods', $this->mockProxy);
-        $this->mockProxy->addMethod('methodName2');
-        $this->assertAttributeEquals(array('methodName', 'methodName2'), 'methods', $this->mockProxy);
-    }
-
     public function testRemoveMethod()
     {
         EcomDev_Utils_Reflection::setRestrictedPropertyValue($this->mockProxy, 'methods', array(

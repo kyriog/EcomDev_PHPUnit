@@ -50,21 +50,6 @@ class EcomDev_PHPUnit_Mock_Proxy
     }
 
     /**
-     * Adds method name to a mock builder
-     *
-     * @param string $methodName
-     * @return $this
-     */
-    public function addMethod($methodName)
-    {
-        $methods = ReflectionUtil::getRestrictedPropertyValue($this, 'methods');
-        $methods[] = $methodName;
-        ReflectionUtil::setRestrictedPropertyValue($this, 'methods', $methods);
-        return $this;
-    }
-
-
-    /**
      * Removes method name from a mock builder
      *
      * @param string $methodName
